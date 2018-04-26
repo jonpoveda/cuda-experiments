@@ -358,21 +358,19 @@ int main(int argc, const char* argv[]) {
       // UNCOMMENT AND FILL THIS MISSING PARAMETERS FOR THIS CUDNN API CALL:
       //////////////////////////////////////////////////////////////////////////////////
 
-      /*
       checkCUDNN(cudnnConvolutionForward(cudnn,
                                      &alpha,
-                                     ...,
-                                     ...,
+                                     input_descriptor,
+                                     d_input,
                                      kernel_descriptor,
-                                     ...,
+                                     d_new_kernel,
                                      convolution_descriptor,
                                      convolution_algorithm,
                                      d_workspace,
                                      workspace_bytes,
                                      &beta,
-                                     ...,
-                                     ...));
-      */
+                                     output_descriptor,
+                                     d_output));
 
       // CODING EXERCISE SHOULD FINISH HERE.
 
