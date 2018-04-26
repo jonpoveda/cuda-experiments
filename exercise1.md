@@ -1,4 +1,4 @@
-# Exercise resolutions
+# Exercise resolution
 
 ## [Master18-M5-Ex1]
 
@@ -8,11 +8,11 @@ Wording:
 cuDNN would select Winograd as its best choice to run a convolution
 in the resulting scenario.
 
-As explained in [documentation][cuda-doc] and in `cudnn.h` used, we 
-expect to execute `convolution.py` and get the algorithm number 6 or 
-7, refering to `CUDNN_CONVOLUTION_FWD_ALGO_WINOGRAD` or 
-`CUDNN_CONVOLUTION_FWD_ALGO_​WINOGRAD_NONFUSED`. Just running the script 
-we get a 5 meaning `CUDNN_CONVOLUTION_FWD_ALGO_FFT_TILING` is selected 
+As explained in [documentation][cuda-doc] and in `cudnn.h` used, we
+expect to execute `convolution.py` and get the algorithm number 6 or
+7, refering to `CUDNN_CONVOLUTION_FWD_ALGO_WINOGRAD` or
+`CUDNN_CONVOLUTION_FWD_ALGO_​WINOGRAD_NONFUSED`. Just running the script
+we get a 5 meaning `CUDNN_CONVOLUTION_FWD_ALGO_FFT_TILING` is selected
 as the best option.
 
 Default configuration is the following:
@@ -34,10 +34,10 @@ alpha = 1.0
 beta = 1.0
 ```
 
-Running it several times with the default parameters we get an average 
-of 28.1 seconds.
+Running it several times with the default parameters we get an average
+of 28.1 miliseconds.
 
-Knowing Winograd outperforms FFT on small filters, we replace the 7x7 
+Knowing Winograd outperforms FFT on small filters, we replace the 7x7
 filters by 3x3. In the configuration:
 
 ```python
@@ -45,9 +45,9 @@ height_filter = 3
 width_filter = 3
 ```
 
-And effectively, the script returns 
-`CUDNN_CONVOLUTION_FWD_ALGO_WINOGRAD` as the algorithm to use with a 
-average time of 18.2 s.
+And effectively, the script returns
+`CUDNN_CONVOLUTION_FWD_ALGO_WINOGRAD` as the algorithm to use with a
+average time of 18.2 ms.
 
 
 ## Annex
@@ -68,5 +68,3 @@ typedef enum
     CUDNN_CONVOLUTION_FWD_ALGO_COUNT = 8,
 } cudnnConvolutionFwdAlgo_t;
 ```
-
-[cuda-doc]: https://docs.nvidia.com/deeplearning/sdk/cudnn-developer-guide/index.html#cudnnConvolutionFwdAlgo_t
